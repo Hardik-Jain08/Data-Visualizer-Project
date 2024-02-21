@@ -29,11 +29,13 @@ function DrawerAppBar(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ my: 2 }}
-                onClick={() => navigate('/home')}
-            >
-                DATA VISUALIZER
-            </Typography>
+            <span>
+                <Typography variant="h6" sx={{ my: 2 }}
+                    onClick={() => navigate('/home')}
+                >
+                    DATA VISUALIZER
+                </Typography>
+            </span>
             <Divider />
             <List>
                 {navItems.map((item) => (
@@ -68,8 +70,10 @@ function DrawerAppBar(props) {
                     <Typography
                         variant="h6"
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' },fontFamily: "Josefin Sans" }}
-                        onClick={() => navigate('/home')}
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontFamily: "Josefin Sans", cursor: "pointer" }
+                        }
+                        onClick={() => navigate('/home')
+                        }
                     >
                         DATA VISUALIZER
                     </Typography>

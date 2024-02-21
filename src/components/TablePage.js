@@ -13,7 +13,7 @@ function TablePage() {
   const storedData = localStorage.getItem("userdata");
   const data = storedData ? JSON.parse(storedData) : [];
   return (
-    <Grid container justifyContent="center" alignItems="center" height="100vh">
+    <Grid container justifyContent="center" alignItems="center" height="100vh" style={{  marginTop: "50px" }}>
       <Grid item xs={12} sm={6} md={8} lg={6}>
         <Paper
           elevation={3}

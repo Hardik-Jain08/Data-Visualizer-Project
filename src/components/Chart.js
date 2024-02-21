@@ -8,9 +8,9 @@ function Chart() {
   const storedData = localStorage.getItem("userdata");
   const data = storedData ? JSON.parse(storedData) : [];
   const getColor = (salary) => {
-    if (salary > 100000) { return "#58C0A1"; }
-    else if (salary < 20000) { return "#F16D64"; }
-    else { return "#FFFF00"; }
+    if (salary > 100000) { return "#01f702"; }
+    else if (salary < 20000) { return "#f60002"; }
+    else { return "#00ffef"; }
   }
 
   return (
