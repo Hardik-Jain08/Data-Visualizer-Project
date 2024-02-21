@@ -24,10 +24,11 @@ export default function Login() {
     const data = new FormData(event.currentTarget);
     const enteredUsername = data.get('email');
     const enteredPassword = data.get('password');
-
+    
     // Check if entered username and password are valid
     if (enteredUsername === 'admin' && enteredPassword === 'admin') {
       navigate('/home');
+      localStorage.setItem('session', 'admin');
       // Proceed with the actual login logic or redirect to another page
     } else {
       // Display error message to the user

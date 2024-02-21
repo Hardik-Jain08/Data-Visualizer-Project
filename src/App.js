@@ -8,6 +8,17 @@ import Login from "./components/Login";
 import Entry from "./components/Entry";
 import TablePage from "./components/TablePage";
 import { DUMMY } from "./utils/dummy";
+import { Navigate } from "react-router-dom";
+
+function PrivateRoute({ element }) {
+  const isAuthenticated = !!localStorage.getItem("session");
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return element;
+}
 
 function App() {
   useEffect(() => {
@@ -32,11 +43,11 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <Home />,
+        element: <PrivateRoute element={<Home />} />,
       },
       {
         path: "/chart",
-        element: <Chart />,
+        element: <PrivateRoute element={<Chart />} />,
       },
       {
         path: "/login",
@@ -44,11 +55,11 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/table",
-        element: <TablePage />,
+        element: <PrivateRoute element={<TablePage />} />,
       },
       {
         path: "/entry",
-        element: <Entry />,
+        element: <PrivateRoute element={<Entry />} />,
       },
     ],
   },

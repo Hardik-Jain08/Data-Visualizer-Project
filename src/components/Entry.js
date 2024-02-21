@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -28,10 +30,34 @@ function Entry() {
     city: "",
     salary: "",
   })
+  const storedData = localStorage.getItem("userdata");
+  const data = storedData ? JSON.parse(storedData) : [];
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (data.some((user) => user.name.toLowerCase() === values.name.toLowerCase())) {
+      toast.error('User already exists', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+
     setUserData((prev) => [...prev, values]);
     localStorage.setItem('userdata', JSON.stringify([...userdata, values]));
+    toast.success('Data added successfully', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     setTimeout(() => {
       setValues({
         name: "",
@@ -55,6 +81,7 @@ function Entry() {
         height: '100vh',
       }}
     >
+      <ToastContainer />
       <Paper
         elevation={3}
         sx={{

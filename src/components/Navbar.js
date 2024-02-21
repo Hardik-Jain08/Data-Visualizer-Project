@@ -40,7 +40,7 @@ function DrawerAppBar(props) {
             <List>
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <ListItemButton to={`/${item}`} sx={{ textAlign: 'center', textTransform: "capitalize", }}>
                             <ListItemText primary={item} />
                         </ListItemButton>
                     </ListItem>
@@ -67,16 +67,21 @@ function DrawerAppBar(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontFamily: "Josefin Sans", cursor: "pointer" }
-                        }
-                        onClick={() => navigate('/home')
-                        }
-                    >
-                        DATA VISUALIZER
-                    </Typography>
+                    <NavLink to="/home" style={{
+                        color: "white",
+                        textDecoration: "none",
+                        textTransform: "capitalize",
+                        cursor: "pointer"
+                    }}>
+                        <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontFamily: "Josefin Sans", }
+                            }
+                        >
+                            DATA VISUALIZER
+                        </Typography>
+                    </NavLink>
                     <Box
                         sx={{
                             display: { xs: 'none', sm: 'flex' }, // Hide on mobile, show on tablet and larger
